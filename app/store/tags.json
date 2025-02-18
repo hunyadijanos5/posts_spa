@@ -1,0 +1,40 @@
+{
+    "tags": [
+        {
+            "id": 1,
+            "name": "classic",
+            "created_at": "2023-02-11",
+            "description": "Classic literature and timeless stories."
+        },
+        {
+            "id": 2,
+            "name": "love",
+            "created_at": "2023-02-10",
+            "description": "Stories about love and relationships."
+        },
+        {
+            "id": 3,
+            "name": "english",
+            "created_at": "2023-02-09",
+            "description": "English literature and language."
+        },
+        {
+            "id": 4,
+            "name": "crime",
+            "created_at": "2023-02-08",
+            "description": "Crime stories and mysteries."
+        },
+        {
+            "id": 5,
+            "name": "magical",
+            "created_at": "2023-02-07",
+            "description": "Magical and fantasy stories."
+        },
+        {
+            "id": 6,
+            "name": "french",
+            "created_at": "2023-02-06",
+            "description": "French literature and stories."
+        }
+    ]
+}
