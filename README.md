@@ -7,7 +7,10 @@ Posts SPA is a simple single-page application (SPA) for managing and viewing pos
 ```
 /<workdir>/projects/posts_spa
 ├── app
+│   ├── middleware
+│   │   └── auth.js
 │   ├── routes
+│   │   ├── auth.js
 │   │   ├── posts.js
 │   │   └── tags.js
 │   ├── store
@@ -17,7 +20,10 @@ Posts SPA is a simple single-page application (SPA) for managing and viewing pos
 │   │   └── tags.json
 │   └── server.js
 ├── public
-│   └── index.html
+│   ├── index.html
+│   └── scripts
+│       └── index.js
+├── .env
 └── README.md
 ```
 
@@ -34,6 +40,11 @@ Posts SPA is a simple single-page application (SPA) for managing and viewing pos
     npm install
     ```
 
+3. Create a `.env` file in the root directory and add your secret key:
+    ```
+    ACCESS_TOKEN_SECRET=M9F4nn9T0ken
+    ```
+
 ## Running the Application
 
 1. Start the server:
@@ -45,15 +56,19 @@ Posts SPA is a simple single-page application (SPA) for managing and viewing pos
 
 ## API Endpoints
 
+### Authentication
+
+- `POST /api/auth/login` - Generate a JWT token. Requires a JSON body with a `username` field.
+
 ### Posts
 
-- `GET /api/posts` - Retrieve all posts.
-- `GET /api/posts/:id` - Retrieve a specific post by ID.
-- `GET /api/posts/:id/comments` - Retrieve comments for a specific post.
+- `GET /api/posts` - Retrieve all posts. Requires authentication.
+- `GET /api/posts/:id` - Retrieve a specific post by ID. Requires authentication.
+- `GET /api/posts/:id/comments` - Retrieve comments for a specific post. Requires authentication.
 
 ### Tags
 
-- `GET /api/tags/:name` - Retrieve posts by tag name.
+- `GET /api/tags/:name` - Retrieve posts by tag name. Requires authentication.
 
 ## Data Structure
 
@@ -97,6 +112,16 @@ Each tag has the following structure:
     "description": "Tag Description"
 }
 ```
+
+## Frontend
+
+The frontend is a simple HTML page that uses JavaScript to fetch data from the API and render it on the page. The `index.js` script handles the login, stores the token, and uses the token for all subsequent requests.
+
+### Example Usage
+
+1. The `login` function sends a POST request to `/api/auth/login` with a username to get a JWT token.
+2. The token is stored in `localStorage` and used for all subsequent requests to the API.
+3. The `loadContent` function fetches data from the API and renders it on the page.
 
 ## License
 
