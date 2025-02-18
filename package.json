@@ -1,0 +1,31 @@
+{
+  "name": "posts_spa",
+  "version": "1.0.0",
+  "description": "Small SPA Posts App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app/server.js",
+    "dev": "nodemon app/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunyadijanos5/posts_spa.git"
+  },
+  "keywords": [
+    "posts",
+    "spa"
+  ],
+  "author": "Hunyadi Janos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hunyadijanos5/posts_spa/issues"
+  },
+  "homepage": "https://github.com/hunyadijanos5/posts_spa#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
