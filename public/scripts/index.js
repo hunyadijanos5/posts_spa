@@ -144,11 +144,18 @@ const requirementsTemplate = () => {
   `;
 }
 
+const handleFetchResponse = (response) => {
+  if (!response.ok) {
+    throw new Error('API response was not ok');
+  }
+  return response.json();
+};
+
 const route = window.location.pathname;
 
 if (route === '/' || route === '/posts') {
   fetch('/api/posts')
-    .then((res) => res.json())
+    .then(handleFetchResponse)
     .then((res) => {
       if (res.data.length === 0) {
         render('content', '<div class="post"><p class="title" style="text-align: center;">There are no posts yet. Come back later!</p></div>');
@@ -163,12 +170,12 @@ if (route === '/' || route === '/posts') {
   let id = route.split('/').slice(-1);
 
   fetch(`/api/posts/${id}`)
-    .then((res) => res.json())
+    .then(handleFetchResponse)
     .then((res) => {
       render('content', postTemplate(res.data, true));
 
       fetch(`/api/posts/${id}/comments`)
-        .then((res) => res.json())
+        .then(handleFetchResponse)
         .then((res) => {
           if (res.data.length === 0) {
             render('comments', '<div class="comment"><p style="text-align: center;">There are no comments yet.</p></div>');
@@ -184,7 +191,7 @@ if (route === '/' || route === '/posts') {
   let id = route.split('/').slice(-1);
 
   fetch(`/api/tags/${id}`)
-    .then((res) => res.json())
+    .then(handleFetchResponse)
     .then((res) => {
       if (res.data.length === 0) {
         render('content', '<div class="post"><p class="title" style="text-align: center;">There are no posts yet. Come back later!</p></div>');
